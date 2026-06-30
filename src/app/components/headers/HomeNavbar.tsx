@@ -48,7 +48,20 @@ export function HomeNavbar() {
                     {!authMember ? (<Box><Button variant="contained" className="login-button">LOGIN</Button></Box>) : (<img className="user-avatar" src={"/icons/default-user.svg"} aria-haspopup={"true"} />)}
                 </Stack>
             </Stack>
-            <Stack>Detail</Stack>
+            <Stack className={"header-frame"}>
+                <Stack className={"detail"}>
+                    <Box className={"head-main-txt"} >World's Most Delicious Cousine</Box>
+                    <Box className={"wel-txt"}>The Choice not just a choice</Box>
+                    <Box className={"service-txt"}>24 hours service</Box>
+                    <Box className={"signup"}>
+                        {!authMember ? <Button variant={"contained"} className={"signup-button"} > SIGN UP</Button> : null}
+
+                    </Box>
+                </Stack>
+                <Box className={"logo-frame"}>
+                    <div className={"logo-img"}></div>
+                </Box>
+            </Stack>
         </Container>
     </div>
     );

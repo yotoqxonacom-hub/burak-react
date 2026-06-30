@@ -1,6 +1,6 @@
 import Container from "@mui/material/Container";
 
-export
+export default
     function HomePage() {
     return <Container>HomePage</Container>;
 }

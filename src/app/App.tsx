@@ -1,19 +1,21 @@
-
-import { BrowserRouter as Router, Switch, Route, useLocation } from "react-router-dom";
-import HomePage from "../screens/homePage";
-import ProductsPage from "../screens/productsPage";
-import OrdersPage from "../screens/ordersPage";
-import UsersPage from "../screens/userPage";
+import React from "react";
+//import { Box, Button, Container, Stack, Typography } from "@mui/material";
+import { Route, Switch, useLocation } from "react-router-dom";
+import HomePage from "./screens/homePage";
+import ProductsPage from "./screens/productsPage";
+import OrdersPage from "./screens/ordersPage";
+import UserPage from "./screens/userPage";
 import HomeNavbar from "./components/headers/HomeNavbar";
 import OtherNavbar from "./components/headers/OtherNavbar";
 import Footer from "./components/footer";
-import HelpPage from "../screens/helpPage";
-import "../css/App.css";
+import HelpPage from "./screens/helpPage";
+import "../css/app.css";
 import "../css/navbar.css";
 import "../css/footer.css";
 
-function Layout() {
+function App() {
   const location = useLocation();
+  console.log("location:", location);
 
   return (
     <>
@@ -26,12 +28,12 @@ function Layout() {
           <OrdersPage />
         </Route>
         <Route path="/member-page">
-          <UsersPage />
+          <UserPage />
         </Route>
         <Route path="/help">
           <HelpPage />
         </Route>
-        <Route exact path="/">
+        <Route path="/">
           <HomePage />
         </Route>
       </Switch>
@@ -39,14 +41,5 @@ function Layout() {
     </>
   );
 }
-
-function App() {
-  return (
-    <Router>
-      <Layout />
-    </Router>
-  );
-}
-
 
 export default App;

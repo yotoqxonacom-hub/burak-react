@@ -1,6 +1,6 @@
 import { error } from "console";
 
-export const serverApi: string = `$(process.env.REACT_APP_API_URL)`;
+export const serverApi: string = `${process.env.REACT_APP_API_URL}`;
 
 export const Message = {
     error1: "Something went wrong!",

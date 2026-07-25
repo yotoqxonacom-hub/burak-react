@@ -10,11 +10,11 @@ import { Dispatch } from "@reduxjs/toolkit";
 import { createSelector } from "reselect";
 import { setNewDishes, setPopularDishes, setTopUsers } from "./slice";
 import { retrievePopularDishes } from "./selector";
-import { Product } from "../../../lib/types/product";
+import { Product } from "../../../libs/types/product";
 import ProductService from "../../services/ProductService";
-import { ProductCollection } from "../../../lib/enums/product.enum";
+import { ProductCollection } from "../../../libs/enums/product.enum";
 import MemberService from "../../services/MemberService";
-import { Member } from "../../../lib/types/member";
+import { Member } from "../../../libs/types/member";
 import "../../../css/home.css";
 
 /** REDUX SLICE & SELECTOR **/

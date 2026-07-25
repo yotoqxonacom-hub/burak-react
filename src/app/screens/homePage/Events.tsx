@@ -1,7 +1,7 @@
 import { Box, Stack } from "@mui/material";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Autoplay, Navigation, Pagination } from "swiper";
-import { plans } from "../../../lib/data/plans";
+import { plans } from "../../../libs/data/plans";
 
 SwiperCore.use([Autoplay, Navigation, Pagination]);
 
@@ -43,7 +43,7 @@ export default function Events() {
                       <div className={"event-title-speaker"}>
                         <strong>{value.title}</strong>
                         <div className={"event-organizator"}>
-                          <img src={"/icons/speaker.svg"} alt=""/>
+                          <img src={"/icons/speaker.svg"} alt="" />
                           <p className={"spec-text-author"}>{value.author}</p>
                         </div>
                       </div>
@@ -56,7 +56,7 @@ export default function Events() {
                           {value.date}
                         </div>
                         <div className={"bott-info-main"}>
-                          <img src={"/icons/location.svg"} alt=""/>
+                          <img src={"/icons/location.svg"} alt="" />
                           {value.location}
                         </div>
                       </div>

@@ -171,7 +171,7 @@ export default function Product() {
             <Stack className="product-wrapper">
               {products.length !== 0 ? (
                 products.map((product: Product) => {
-                  const imagePath = `${serverApi}/${product.productImages[0].replace(/\\/g, "/")}`;
+                  const imagePath = `${serverApi}/${product.productImages[0]?.replace(/\\/g, "/")}`;
                   const sizeVolume = product.productCollection === ProductCollection.DRINK ? product.productVolume + "litre" : product.productSize + " size";
                   return (
                     <Stack key={String(product._id)} className={"product-card"} onClick={() => chooseDishHendler(String(product._id))}>

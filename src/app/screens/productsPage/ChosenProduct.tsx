@@ -22,6 +22,7 @@ import ProductService from "../../services/ProductService";
 import MemberService from "../../services/MemberService";
 import { Member } from "../../../libs/types/member";
 import { serverApi } from "../../../libs/config";
+import { CartItem } from "../../../libs/types/search";
 
 /** REDUX SLICE & SELECTOR **/
 const actionDispatch = (dispatch: Dispatch) => ({
@@ -43,9 +44,12 @@ const restaurantRetriever = createSelector(
   })
 );
 
+interface ChosenProductProps {
+  onAdd: (item: CartItem) => void
+}
 
-
-export default function ChosenProduct() {
+export default function ChosenProduct(props: ChosenProductProps) {
+  const { onAdd } = props;
   const { productId } = useParams<{ productId: string }>();
   const { setRestaurant, setChosenProduct } = actionDispatch(useDispatch());
   const { chosenProduct } = useSelector(chosenProductRetriever);
@@ -55,12 +59,18 @@ export default function ChosenProduct() {
 
   useEffect(() => {
     const product = new ProductService();
-    product.getProduct(productId).then((data) => setChosenProduct(data))
+
+    product
+      .getProduct(productId)
+      .then((data) => setChosenProduct(data))
       .catch(err => console.log(err));
 
 
     const member = new MemberService();
-    member.getRestaurant().then((data) => setRestaurant(data))
+
+    member
+      .getRestaurant()
+      .then((data) => setRestaurant(data))
       .catch(err => console.log(err));
   }, []);
 

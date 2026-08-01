@@ -9,9 +9,6 @@ import HomeNavbar from "./components/headers/HomeNavbar";
 import OtherNavbar from "./components/headers/OtherNavbar";
 import Footer from "./components/footer";
 import HelpPage from "./screens/helpPage";
-import "../css/App.css";
-import "../css/navbar.css";
-import "../css/footer.css";
 import Test from "./screens/test";
 import { CartItem } from "../libs/types/search";
 import useBasket from "./hooks/useBasket";
@@ -22,6 +19,9 @@ import { Message } from "@mui/icons-material";
 import { Messages } from "../libs/config";
 import MemberService from "./services/MemberService";
 import { useGlobals } from "./hooks/useGlobals";
+import "../css/App.css";
+import "../css/navbar.css";
+import "../css/footer.css";
 
 function App() {
   const location = useLocation();

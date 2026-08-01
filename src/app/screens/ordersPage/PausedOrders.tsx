@@ -59,14 +59,14 @@ export default function PausedOrders() {
                     alt=""
                   />
                   <p>Delivery cost</p>
-                  <p>$${order.orderDelivery}</p>
+                  <p>${order.orderDelivery}</p>
                   <img
                     src={"/icons/pause.svg"}
                     style={{ marginLeft: "20px" }}
                     alt=""
                   />
                   <p>Total</p>
-                  <p>$${order.orderTotal}</p>
+                  <p>${order.orderTotal}</p>
                 </Box>
                 <Button
                   variant="contained"

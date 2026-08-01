@@ -8,7 +8,10 @@ import RestoreFromTrashIcon from '@mui/icons-material/RestoreFromTrash';
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { useHistory } from "react-router-dom";
 import { CartItem } from "../../../libs/types/search";
-import { serverApi } from "../../../libs/config";
+import { Messages, serverApi } from "../../../libs/config";
+import { sweetErrorHandling } from "../../../libs/sweetAlert";
+import OrderService from "../../services/OrderService";
+import { useGlobals } from "../../hooks/useGlobals";
 
 interface BasketProps {
   cartItems: CartItem[];
@@ -20,7 +23,7 @@ interface BasketProps {
 
 export default function Basket(props: BasketProps) {
   const { cartItems, onAdd, onRemove, onDelete, onDeleteAll } = props;
-  const authMember = null;
+  const { authMember } = useGlobals();
   const history = useHistory();
   const itemPrice: number = cartItems.reduce((a: number, c: CartItem) => a + c.quantity * c.price, 0)
   const shippingCost: number = itemPrice < 100 ? 5 : 0;
@@ -36,6 +39,22 @@ export default function Basket(props: BasketProps) {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const proceedOrderHandler = async () => {
+    try {
+      handleClose();
+      if (!authMember) throw new Error(Messages.error2);
+      const order = new OrderService();
+      await order.createOrder(cartItems);
+
+      onDeleteAll();
+      history.push("/orders");
+
+    } catch (err) {
+      console.log(err);
+      sweetErrorHandling(err).then();
+    }
+  }
 
   return (
     <Box className={"hover-line"}>
@@ -126,7 +145,7 @@ export default function Basket(props: BasketProps) {
           </Box>
           {cartItems.length !== 0 ? (<Box className={"basket-order"}>
             <span className={"price"}>Total: ${totalPrice} ({itemPrice} + {shippingCost})</span>
-            <Button startIcon={<ShoppingCartIcon />} variant={"contained"}>
+            <Button startIcon={<ShoppingCartIcon />} variant={"contained"} onClick={proceedOrderHandler}>
               Order
             </Button>
           </Box>) : ("")}
@@ -136,3 +155,7 @@ export default function Basket(props: BasketProps) {
     </Box>
   );
 }
+function useGobals(): { authMember: any; } {
+  throw new Error("Function not implemented.");
+}
+

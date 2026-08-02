@@ -7,6 +7,7 @@ const ContextProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     const cookies = new Cookies();
     if (!cookies.get("accessToken")) localStorage.removeItem("memberData");
 
+
     const [authMember, setAuthMember] = useState<Member | null>(
         localStorage.getItem("memberData")
             ? JSON.parse(localStorage.getItem("memberData") as string)
